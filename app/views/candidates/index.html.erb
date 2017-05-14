@@ -1,0 +1,18 @@
+<h1>候選人列表</h1>
+
+<%= link_to '新增候選人', new_candidate_path %>
+
+
+
+<ul>
+<% @candidates.each do |candidate| %>
+	<li>
+	<%= candidate.vote_logs.count  %>票
+	<%= link_to '投票', vote_candidate_path(candidate), method: "post", data: {confirm: "Are you sure to vote?"} %>
+	<%= link_to candidate.info, candidate_path(candidate)  %>
+	<%= link_to	candidate.name, candidate_path(candidate) %>
+	<%= link_to '編輯', edit_candidate_path(candidate) %>
+	<%= link_to '刪除', candidate_path(candidate), method: "delete", data: {confirm: "Are you sure to delete?"} %>
+	</li>
+<% end %>
+</ul>
